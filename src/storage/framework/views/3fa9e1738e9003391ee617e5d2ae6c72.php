@@ -6,19 +6,24 @@
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css']); ?>
     <?php echo $__env->yieldContent('css'); ?>
 </head>
+
 <body>
+
     <?php echo $__env->make('layouts/shared/status-alert-server-side', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->make('layouts/shared/status-alert-client-side', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <main class="flex-grow h-screen">
+    <main class="flex-grow p-4 lg:p-8">
+        <?php echo $__env->make('layouts/shared/topbar-2', [
+        'title' => $title,
+        ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->yieldContent('header'); ?>
         <?php echo $__env->yieldContent('content'); ?>
         <?php echo $__env->yieldContent('footer'); ?>
         <?php echo $__env->make('layouts/shared/back-to-top-button', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </main>
+
     <?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js']); ?>
-    <?php echo $__env->yieldPushContent('scripts'); ?>
-    
+
 </body>
 </html>
-<?php /**PATH C:\Users\patip\NEX\miscibles-platform-2.4\src\resources\views/layouts/blank.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\patip\NEX\miscibles-platform-2.4\src\resources\views/layouts/secondary.blade.php ENDPATH**/ ?>

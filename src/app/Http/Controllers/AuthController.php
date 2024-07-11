@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             $userDocument = $this->firestore->collection(config('firebase.collection.user'))->document($loginUid)->snapshot();
             if ($userDocument->exists() && isset($userDocument['role'])) {
-                $userRole = $userDocument['role'];  // ตัวแปร $userRole นี้ควรเป็น string
+                $userRole = $userDocument['role']; 
                 Session::put('role', $userRole);
             } else {
                 Session::put('role', 'guest');

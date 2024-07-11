@@ -16,3 +16,8 @@
 [2024-07-11 14:43:11] local.INFO: User not authenticated. Redirecting to login.  
 [2024-07-11 14:43:18] local.INFO: User not authenticated. Redirecting to login.  
 [2024-07-11 14:46:07] local.INFO: User not authenticated. Redirecting to login.  
+[2024-07-11 15:19:24] local.INFO: User not authenticated. Redirecting to login.  
+[2024-07-11 15:19:29] local.INFO: User not authenticated. Redirecting to login.  
+[2024-07-11 15:20:03] local.INFO: User not authenticated. Redirecting to login.  
+[2024-07-11 15:20:22] local.INFO: User not authenticated. Redirecting to login.  
+[2024-07-11 15:20:29] local.INFO: Access denied for user role: sales  
