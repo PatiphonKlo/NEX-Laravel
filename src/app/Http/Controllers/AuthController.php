@@ -51,6 +51,6 @@ class AuthController extends Controller
         Session::forget('url.intended');
         Auth::logout();
         Cache::flush();
-        return redirect()->route('home');
+        return redirect('/');
     }
 }

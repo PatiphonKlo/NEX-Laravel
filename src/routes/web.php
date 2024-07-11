@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\EnquiryActionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PdfAccessController;
 
-Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class, 'index']);
 
 Route::get('/authentication/login', function () {
     return view('pages/authentication/login');

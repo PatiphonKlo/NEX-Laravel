@@ -25,7 +25,7 @@ class DefaultRole
         if (!Session::has('uid')) {
             Log::info('User not authenticated. Redirecting to login.');
             Session::flash('auth_failed', true);
-            return redirect()->route('home');
+            return redirect('/');
         }
 
         return $next($request);
