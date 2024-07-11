@@ -7,7 +7,6 @@ use App\Http\Controllers\StandardProduct\AssemblyPartController;
 use App\Http\Controllers\StandardProduct\CostEstimationController;
 use App\Http\Controllers\StandardProduct\TechnicalDataController;
 use App\Http\Controllers\StandardProduct\QuotationController;
-use App\Http\Controllers\StandardProduct\ClientController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\ProductActionController;
 use App\Http\Controllers\Admin\AssemblyPartActionController;
@@ -16,16 +15,10 @@ use App\Http\Controllers\Admin\CostEstimateActionController;
 use App\Http\Controllers\Admin\QuotationActionController;
 use App\Http\Controllers\Admin\ClientActionController;
 use App\Http\Controllers\Admin\EnquiryActionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PdfAccessController;
-use Illuminate\Support\Facades\Session;
 
-Route::get('/', function () {
-    $showModal = Session::get('auth_failed', false);
-    $authenticated = Session::has('uid');
-    $role = Session::get('role');
-    return view('pages/user/home', (compact('showModal', 'authenticated', 'role')));
-})->name('home');
-
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 Route::get('/authentication/login', function () {
     return view('pages/authentication/login');
