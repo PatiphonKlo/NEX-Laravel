@@ -12,7 +12,7 @@
     @include('layouts/shared/status-alert-client-side')
 
 
-    <main class="flex-grow">
+    <main class="flex-grow h-screen">
         @yield('header')
         @yield('content')
         @yield('footer')
@@ -20,6 +20,7 @@
     </main>
 
     @vite(['resources/js/app.js'])
+    @stack('scripts')
 
 </body>
 </html>

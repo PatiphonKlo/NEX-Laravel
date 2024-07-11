@@ -12,8 +12,8 @@
             <img class="contrast-125 object-scale-down h-[95%] mx-auto p-4" src="{{$imageURL}}">
         </div>
         <div class="grid grid-cols-3 gap-2 mt-[2vh]">
-            <a href="{{ url('client-form/'.$group.'/'.$model) }}" class="col-start-3 col-span-1">
-                <h2 class="p-2 uppercase border-2 border-green-500 bg-green-400 transition hover:bg-green-500 rounded-md text-center font-semibold">
+            <a href="{{ url('quotation-form/'.$group.'/'.$model) }}" class="col-start-3 col-span-1">
+                <h2 class="p-2 uppercase bg-green-400 transition hover:bg-green-500 rounded-md text-center hover:text-white">
                     request quotation
                 </h2>
             </a>

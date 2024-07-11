@@ -37,7 +37,8 @@ class AssemblyPartController extends Controller
                         'part_image' => $assemblyParts['part_image'],
                         'part_name' => $assemblyParts['part_name'],
                         'part_id' => $assemblyParts['part_id'],
-                        'spare_part' => $assemblyParts['spare_part']
+                        'spare_part' => $assemblyParts['spare_part'],
+                        'min_spare' => $assemblyParts['min_spare']
                     ];
                 }
             }

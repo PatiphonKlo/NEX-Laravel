@@ -12,26 +12,32 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     protected $auth;
+    protected $firestore;
 
     public function __construct()
     {
         $this->middleware('guest');
         $this->auth = (new Firebase)->authentication;
+        $this->firestore = (new Firebase)->firestoreDb;
     }
 
     public function login(Request $request)
     {
         try {
             $loggedUser = $this->auth->signInWithEmailAndPassword($request->email, $request->password);
-
             $loginUid = $loggedUser->firebaseUserId();
+
+            $userDocument = $this->firestore->collection(config('firebase.collection.user'))->document($loginUid)->snapshot();
+            if ($userDocument->exists() && isset($userDocument['role'])) {
+                $userRole = $userDocument['role'];  // ตัวแปร $userRole นี้ควรเป็น string
+                Session::put('role', $userRole);
+            } else {
+                Session::put('role', 'undefined');
+            }
             Session::put('uid', $loginUid);
 
             $user = new User($loggedUser->data());
             Auth::login($user);
-
-            // Auth::login($user, true);
-            // ล็อกอินผู้ใช้และตั้งค่าตัวเลือก "remember me" ผู้ใช้จะถูกจดจำในระบบแม้หลังจากเซสชันปัจจุบันหมดอายุ
 
             return redirect()->intended('admin/product');
         } catch (\Kreait\Firebase\Auth\SignIn\FailedToSignIn) {
@@ -41,12 +47,10 @@ class AuthController extends Controller
     public function logout()
     {
         Session::forget('uid');
+        Session::forget('role');
         Session::forget('url.intended');
-
         Auth::logout();
-
         Cache::flush();
-
-        return redirect()->route('login')->with('status', 'You have been logged out successfully.');
+        return redirect()->route('home');
     }
 }

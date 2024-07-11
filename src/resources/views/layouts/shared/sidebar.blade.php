@@ -24,6 +24,7 @@
     </button>
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-200">
         <ul class=" font-medium divide-y">
+            @if (session('role') == 'admin')
             <li>
                 <a href="{{ url('admin/cost-estimation') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
@@ -73,9 +74,11 @@
                         <path
                             d="M12.503 2.134a1 1 0 0 0-1 0L4.501 6.17A1 1 0 0 0 4.5 7.902l7.002 4.047a1 1 0 0 0 1 0l6.998-4.04a1 1 0 0 0 0-1.732l-6.997-4.042Z" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">All Products</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
                 </a>
             </li>
+            @endif
+            
             <li>
                 <a href="{{ url('admin/client') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
@@ -84,7 +87,7 @@
                         <path
                             d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Client</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Clients</span>
                 </a>
             </li>
             <li>
@@ -97,10 +100,10 @@
                             d="M4 4a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4H4Zm0 6h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Zm10.707 5.707a1 1 0 0 0-1.414-1.414l-.293.293V12a1 1 0 1 0-2 0v2.586l-.293-.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l2-2Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">All Quotations</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Quotations</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ url('admin/made-to-order') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
                     <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 group-hover:text-gray-900"
@@ -111,7 +114,7 @@
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Enquiry Form</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ url('admin/enquiry') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100  group">
@@ -122,7 +125,7 @@
                             d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">All Enquiry</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Enquiries</span>
                 </a>
             </li>
             <li>

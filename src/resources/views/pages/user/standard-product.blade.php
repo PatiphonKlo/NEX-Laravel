@@ -34,7 +34,7 @@
                 QUOTATION
             </span>
         </a>
-        <a href="{{url('admin/product') }}" class="shadow shadow-gray-400 text-xs md:text-sm lg:text-base text-center font-inter font-medium flex items-center justify-center transition hover:bg-primary hover:text-white rounded-md bg-orange-200 border-2 border-primary p-2 lg:h-20">
+        <a href="{{url('admin/quotation') }}" class="shadow shadow-gray-400 text-xs md:text-sm lg:text-base text-center font-inter font-medium flex items-center justify-center transition hover:bg-primary hover:text-white rounded-md bg-orange-200 border-2 border-primary p-2 lg:h-20">
             <span>
                 UPDATE COST
             </span>

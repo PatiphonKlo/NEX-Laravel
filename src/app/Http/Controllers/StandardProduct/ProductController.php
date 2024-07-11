@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Services\Firebase;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {

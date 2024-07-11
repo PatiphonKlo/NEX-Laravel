@@ -8,7 +8,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Kreait\Firebase\Exception\Auth\UserNotFound;
@@ -117,7 +116,7 @@ class QuotationActionController extends Controller
 
                     $documentData['quotation_code'] = 'MQ-' . date('His', $createdTimestamp) . '-' . date('dmY', $createdTimestamp);
 
-                    $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.jpg';
+                    $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.svg';
                     $bucketName = config('firebase.projects.app.storage.default_bucket');
                     $bucket = $this->storage->getBucket($bucketName);
                     $expiresAt = new DateTime('15 min');
@@ -152,7 +151,7 @@ class QuotationActionController extends Controller
                 'product_id' => 'required|max:50',
                 'client_id' => 'required|max:50',
                 'product_price' => 'required|numeric|min:0|digits_between:1,8',
-                'product_assurance' => 'required|numeric|min:0|max:20',
+                'product_warranty' => 'required|numeric|min:0|max:20',
                 'product_down_payment' => 'required|numeric|min:0|max:100',
                 'product_after_install' => 'required|numeric|min:0|max:100',
                 'product_final_check' => 'required|numeric|min:0|max:100',
@@ -194,7 +193,7 @@ class QuotationActionController extends Controller
                 'product_delivery_term' => (int)($request->product_delivery_term),
                 'product_credit_day' => (int)($request->product_credit_day),
                 'product_discount' => (int)($request->product_discount),
-                'product_assurance' => (int)($request->product_assurance),
+                'product_warranty' => (int)($request->product_warranty),
             );
             $createQuotation = $this->firestore->collection(config('firebase.collection.quotation'))->document($newDocumentId)->set($postData);
             return back()->with('status', 'Added successfully.');
@@ -204,42 +203,6 @@ class QuotationActionController extends Controller
         }
     }
 
-    public function request($model, $postKey)
-    {
-        try {
-            $productDocument = $this->firestore->collection(config('firebase.collection.product'))->where('product_model', '=', $model)->documents()->rows()[0];
-            $productData = $productDocument->data();
-            $productId = $productDocument->id();
-            $newDocument = $this->firestore->collection(config('firebase.collection.quotation'))->newDocument();
-            $newDocumentId = $newDocument->id();
-            $postData = array(
-                'product_id' => $productId,
-                'client_id' => $postKey,
-                'quotation_password' => Str::random(10),
-                'created_by' => Session::get('uid'),
-                'created_at' => new Timestamp(new DateTime()),
-                'edited_by' => Session::get('uid'),
-                'edited_at' => new Timestamp(new DateTime()),
-                'quotation_layout_name' => 'default',
-                'product_price' => $productData['product_price'],
-                'product_down_payment' => $productData['product_down_payment'],
-                'product_after_install' => $productData['product_after_install'],
-                'product_final_check' => $productData['product_final_check'],
-                'product_price_validity' => $productData['product_price_validity'],
-                'product_delivery_term' => $productData['product_delivery_term'],
-                'product_credit_day' => $productData['product_credit_day'],
-                'product_discount' => $productData['product_discount'],
-                'product_assurance' => $productData['product_assurance'],
-            );
-
-            $createQuotation = $this->firestore->collection(config('firebase.collection.quotation'))->document($newDocumentId)->set($postData);
-            Session::forget('url.intended');
-            return redirect('admin/quotation')->with('status', 'Added successfully.');
-        } catch (\Exception $exception) {
-            Log::error($exception->getMessage());
-            return back()->with('error', 'Error occurred.');
-        }
-    }
 
     public function update(Request $request, $key)
     {
@@ -250,7 +213,7 @@ class QuotationActionController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'product_price_update' . $request->update_id => 'required|numeric|min:0|digits_between:1,8',
-                'product_assurance_update' . $request->update_id => 'required|numeric|min:0|max:20',
+                'product_warranty_update' . $request->update_id => 'required|numeric|min:0|max:20',
                 'product_down_payment_update' . $request->update_id => 'required|numeric|min:0|max:100',
                 'product_after_install_update' . $request->update_id => 'required|numeric|min:0|max:100',
                 'product_final_check_update' . $request->update_id => 'required|numeric|min:0|max:100',
@@ -285,7 +248,7 @@ class QuotationActionController extends Controller
                 'product_delivery_term' => (int)($request->get('product_delivery_term_update' . $request->update_id)),
                 'product_credit_day' => (int)($request->get('product_credit_update' . $request->update_id)),
                 'product_discount' => (int)($request->get('product_discount_update' . $request->update_id)),
-                'product_assurance' => (int)($request->get('product_assurance_update' . $request->update_id))
+                'product_warranty' => (int)($request->get('product_warranty_update' . $request->update_id))
             );
 
             $updateQuotation = $this->firestore->collection(config('firebase.collection.quotation'))->document($key)->set($postData, ['merge' => true]);
@@ -298,7 +261,7 @@ class QuotationActionController extends Controller
 
     public function pdfView($key)
     {
-        // try {
+        try {
             $documentData = $this->firestore->collection(config('firebase.collection.quotation'))->document($key)->snapshot()->data();
 
 
@@ -328,7 +291,7 @@ class QuotationActionController extends Controller
 
             $documentData['quotation_code'] = 'MQ-' . date('His', $createdTimestamp) . '-' . date('dmY', $createdTimestamp);
 
-            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.jpg';
+            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.svg';
             $bucketName = config('firebase.projects.app.storage.default_bucket');
             $bucket = $this->storage->getBucket($bucketName);
             $expiresAt = new DateTime('15 min');
@@ -340,15 +303,15 @@ class QuotationActionController extends Controller
 
             $pdf = Pdf::loadView('layouts/pdf/quotation', compact('quotation'));
             return $pdf->stream('Quotation.pdf', ['Attachment' => false]);
-        // } catch (\Exception $exception) {
-        //     Log::error($exception->getMessage());
-        //     return back()->with('error', 'Error occurred.');
-        // }
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return back()->with('error', 'Error occurred.');
+        }
     }
 
     public function sendPDF(Request $request, $key)
     {
-        // try {
+        try {
             $messages = [
                 'required' => 'This field is required.',
             ];
@@ -382,7 +345,7 @@ class QuotationActionController extends Controller
 
             $quotationData['quotation_code'] = 'MQ-' . date('His', $createdTimestamp) . '-' . date('dmY', $createdTimestamp);
 
-            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.jpg';
+            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.svg';
             $bucketName = config('firebase.projects.app.storage.default_bucket');
             $bucket = $this->storage->getBucket($bucketName);
             $expiresAt = new DateTime('15 min');
@@ -401,10 +364,10 @@ class QuotationActionController extends Controller
                     ->attachData($pdf->output(), "Quotation.pdf");
             });
             return redirect('admin/quotation')->with('status', 'Email has been successfully sent');
-        // } catch (Exception $exception) {
-        //     Log::error($exception->getMessage());
-        //     return redirect('admin/quotation')->withInput()->with('error', 'Error occurred.');
-        // }
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage());
+            return redirect('admin/quotation')->withInput()->with('error', 'Error occurred.');
+        }
     }
     public function delete($key)
     {

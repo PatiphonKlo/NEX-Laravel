@@ -9,7 +9,7 @@
     <div class="fixed inset-0 z-10 w-screen">
         <div id="overlay" class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
             <div
-                class="p-5 relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-3xl lg:max-w-6xl">
+                class="p-5 relative transform rounded-lg bg-white text-left shadow-xl transition-all h-160 sm:max-w-3xl lg:max-w-6xl">
 
                 <!-- Modal header -->
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5">
@@ -38,11 +38,30 @@
                                 Sheet</label>
                             <input accept=".pdf"
                                 class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                                name="spec_sheet" type="file">
+                                name="spec_sheet" type="file" onchange="validateFileSize(this)">
+                                <p id="file-size-error" class="mt-2 text-sm text-danger-normal whitespace-normal" style="display:none;">File must not exceed 2MB</p>
                             @error('spec_sheet')
                                 <p class="mt-2 text-sm text-danger-normal whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <script>
+                            function validateFileSize(input) {
+                                const maxFileSize = 2 * 1024 * 1024;
+                                const fileSizeError = document.getElementById('file-size-error');
+                        
+                                if (input.files && input.files[0]) {
+                                    if (input.files[0].size > maxFileSize) {
+                                        fileSizeError.style.display = 'block';
+                                        fileSizeError.textContent = 'File size must not exceed 2MB';
+                                        input.value = '';
+                                    } else {
+                                        fileSizeError.style.display = 'none';
+                                    }
+                                }
+                            }
+                        </script>
+
                         <div class="col-span-2">
                             <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900">Product
                                 Name</label>
@@ -276,13 +295,13 @@
                             @enderror
                         </div>
                         <div class="col-span-1">
-                            <label for="product_assurance"
-                                class="block mb-2 text-sm font-medium text-gray-900">Assurance
+                            <label for="product_warranty"
+                                class="block mb-2 text-sm font-medium text-gray-900">Warranty
                                 (Year)</label>
-                            <input type="number" name="product_assurance" value="{{ old('product_assurance') }}"
+                            <input type="number" name="product_warranty" value="{{ old('product_warranty') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 1">
-                            @error('product_assurance')
+                            @error('product_warranty')
                                 <p class="mt-2 text-sm text-danger-normal whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
@@ -344,7 +363,7 @@
                     </div>
 
 
-                    <div class="grid gap-4 mb-4 md:grid-cols-2 lg:grid-cols-4">
+                    {{-- <div class="grid gap-4 mb-4 md:grid-cols-2 lg:grid-cols-4">
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900" for="picture">Image</label>
                             <input image-file="1" required accept=".jpg"
@@ -396,7 +415,7 @@
                             <p id="error4" class="text-sm text-danger-normal whitespace-normal"></p>
                             <img id="image4" src="" alt="">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="flex justify-end mt-10">
                         <button type="submit" id="submitButton"
@@ -575,7 +594,7 @@
         $errors->has('product_group') ||
         $errors->has('product_model') ||
         $errors->has('product_price') ||
-        $errors->has('product_assurance') ||
+        $errors->has('product_warranty') ||
         $errors->has('product_down_payment') ||
         $errors->has('product_after_install') ||
         $errors->has('product_final_check') ||

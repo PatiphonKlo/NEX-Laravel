@@ -17,7 +17,8 @@ return [
         'technical_data' => 'Technical_Data',
         'quotation' => 'Quotations',
         'product_group' => 'Product_Groups',
-        'enquiry' => 'Enquiries'
+        'enquiry' => 'Enquiries',
+        'user' => 'Users'
     ],
 
     /*

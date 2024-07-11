@@ -50,7 +50,7 @@
                                             data-credit-day="{{ $item['product_credit_day'] }}"
                                             data-discount="{{ $item['product_discount'] }}"
                                             data-price="{{ $item['product_price'] }}"
-                                            data-assurance="{{ $item['product_assurance'] }}"
+                                            data-warranty="{{ $item['product_warranty'] }}"
                                             data-down-payment="{{ $item['product_down_payment'] }}"
                                             data-after-install="{{ $item['product_after_install'] }}"
                                             data-final-check="{{ $item['product_final_check'] }}">
@@ -162,13 +162,13 @@
                             @enderror
                         </div>
                         <div class="col-span-1">
-                            <label for="product_assurance"
-                                class="block mb-2 text-sm font-medium text-gray-900">Assurance
+                            <label for="product_warranty"
+                                class="block mb-2 text-sm font-medium text-gray-900">Warranty
                                 Year</label>
-                            <input type="number" name="product_assurance" value="{{ old('product_assurance') }}"
+                            <input type="number" name="product_warranty" value="{{ old('product_warranty') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="ex . 1">
-                            @error('product_assurance')
+                            @error('product_warranty')
                                 <p class="mt-2 text-sm text-danger-normal whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
@@ -241,7 +241,7 @@
         var creditDay = selectedOption.getAttribute('data-credit-day');
         var discount = selectedOption.getAttribute('data-discount');
         var price = selectedOption.getAttribute('data-price');
-        var assurance = selectedOption.getAttribute('data-assurance');
+        var warranty = selectedOption.getAttribute('data-warranty');
         var downPayment = selectedOption.getAttribute('data-down-payment');
         var afterInstall = selectedOption.getAttribute('data-after-install');
         var finalCheck = selectedOption.getAttribute('data-final-check');
@@ -252,7 +252,7 @@
         document.getElementsByName('product_credit_day')[0].value = creditDay || '';
         document.getElementsByName('product_discount')[0].value = discount || '';
         document.getElementsByName('product_price')[0].value = price || '';
-        document.getElementsByName('product_assurance')[0].value = assurance || '';
+        document.getElementsByName('product_warranty')[0].value = warranty || '';
         document.getElementsByName('product_down_payment')[0].value = downPayment || '';
         document.getElementsByName('product_after_install')[0].value = afterInstall || '';
         document.getElementsByName('product_final_check')[0].value = finalCheck || '';

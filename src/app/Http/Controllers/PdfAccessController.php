@@ -150,7 +150,7 @@ class PdfAccessController extends Controller
 
             $documentData['quotation_code'] = 'MQ-' . date('His', $createdTimestamp) . '-' . date('dmY', $createdTimestamp);
 
-            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.jpg';
+            $firebase_storage_path = config('firebase.storage_path.quotation_signature') . '/Signature.svg';
             $bucketName = config('firebase.projects.app.storage.default_bucket');
             $bucket = $this->storage->getBucket($bucketName);
             $expiresAt = new DateTime('15 min');
@@ -163,40 +163,6 @@ class PdfAccessController extends Controller
 
             $pdf = Pdf::loadView('layouts/pdf/quotation', compact('quotation'));
             return $pdf->setPaper('A4', 'portrait')->stream('Quotation.pdf');
-        } catch (\Exception $exception) {
-            Log::error($exception->getMessage());
-            return response()->json(['error' => 'Error occurred'], 500);
-        }
-    }
-
-    public function viewSpecPDF($key)
-    {
-        try {
-            $token = request()->route('token');
-            $decryptedToken = decrypt($token);
-            $expirationTimestamp = $decryptedToken['expires_at'];
-            if (time() > $expirationTimestamp) {
-                return back()->with('error', 'Token has expired');
-            }
-
-            $document = $this->firestore->collection(config('firebase.collection.product'))->document($key);
-            $model = $document->snapshot()->data()['product_model'];
-            $bucketName = config('firebase.projects.app.storage.default_bucket');
-            $bucket = $this->storage->getBucket($bucketName);
-            $expiresAt = new DateTime('15 minutes');
-
-            $sheetRef = $bucket->object(config('firebase.storage_path.product_spec') . '/' . $model . '-spec-sheet.pdf');
-            if ($sheetRef->exists()) {
-                $pathRef = config('firebase.storage_path.product_spec') . '/' . $model . '-spec-sheet.pdf';
-                $pdfURL = $bucket->object($pathRef)->signedUrl($expiresAt, [
-                    'version' => 'v4',
-                    // to download file
-                    // 'responseDisposition' => 'attachment; filename="' . $model . '-spec-sheet.pdf"'
-                ]);
-                return redirect()->away($pdfURL);
-            } else {
-                return redirect()->back()->with('error', 'PDF not found.');
-            }
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return response()->json(['error' => 'Error occurred'], 500);

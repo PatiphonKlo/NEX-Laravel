@@ -10,13 +10,13 @@
                 </div>
                 <div class="grid grid-cols-3">
                     <div
-                        class="shadow shadow-gray-400 col-span-2 mt-2 rounded-l-md border-y-2 border-l-2 border-primary bg-secondary">
+                        class="shadow shadow-gray-400 col-span-2 mt-2 rounded-l-md border-y-2 border-l-2  {{ $item['min_spare'] <= $item['spare_part'] ? 'border-primary' : 'border-red-600' }} bg-secondary">
                         <h2 class="p-1 text-center uppercase font-semibold">{{ $item['part_name'] }} <br> (
                             {{ $item['part_id'] }} )</h2>
                     </div>
                     <div
-                        class="shadow shadow-gray-400 col-span-1 mt-2 rounded-r-md border-y-2 border-r-2 border-primary flex items-center justify-center">
-                        <h2 class="p-1 text-center uppercase font-semibold">{{ $item['spare_part'] }} UNIT</h2>
+                        class="shadow shadow-gray-400 col-span-1 mt-2 rounded-r-md border-y-2 border-r-2  {{ $item['min_spare'] <= $item['spare_part'] ? 'border-primary' : 'border-red-600' }} flex items-center justify-center">
+                        <h2 class="p-1 text-center uppercase font-semibold">{{ $item['spare_part'] }} UNIT </h2>
                     </div>
                 </div>
             </div>

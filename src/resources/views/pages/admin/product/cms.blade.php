@@ -102,7 +102,7 @@
 
                         <td class="p-4 flex flex-col xl:flex-row space-y-2 xl:space-y-0 xl:space-x-2">
                             <div class="w-36 xl:w-32">
-                                @include('pages/admin/product/spec/modal-share')
+                                @include('pages/admin/product/spec/modal-view')
                             </div>
                             <div class="w-36">
                                 @include('pages/admin/product/modal-update')

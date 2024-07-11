@@ -14,9 +14,7 @@
 
         <!-- Logo(small screen) -->
         <div class="lg:hidden flex-nowrap">
-            <x-link href="http://www.miscible.co.th/">
-                <img src="/svg/NEX-logo.svg" alt="NEX logo" class="h-7 ss:h-8" />
-            </x-link>
+            <img src="/svg/NEX-logo.svg" alt="NEX logo" class="h-7 ss:h-8" />
         </div>
 
         <!-- Top bar content -->
@@ -30,8 +28,7 @@
                     </div>
                 </li>
                 <li class="hidden lg:block col-span-3">
-                    <div
-                        class="flex justify-center bg-primary text-white lg:rounded-md lg:border-2 border-primary p-2">
+                    <div class="flex justify-center bg-primary text-white lg:rounded-md lg:border-2 border-primary p-2">
                         {{ $subtitle }}
                     </div>
                 </li>
@@ -56,9 +53,9 @@
         </div>
 
         <!-- Logo(normal screen) -->
-        <x-link href="{{ url('/') }}" class="hidden lg:flex col-start-11 col-span-2 justify-end items-center">
+        <div href="{{ url('/') }}" class="hidden lg:flex col-start-11 col-span-2 justify-end items-center">
             <img src="/svg/NEX-logo.svg" alt="NEX logo" class="h-12 w-full" />
-        </x-link>
+        </div>
 
     </div>
 </nav>

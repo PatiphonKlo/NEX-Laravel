@@ -216,7 +216,7 @@ class EnquiryActionController extends Controller
             ];
 
             if ($request->input('drawing_file') == 'yes') {
-                $rules['upload_drawing_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,xlsx,doc,docx|max:51200';
+                $rules['upload_drawing_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,xlsx,doc,docx|max:5120';
             }
 
             $validator = Validator::make($request->all(), $rules, $messages);
@@ -435,11 +435,10 @@ class EnquiryActionController extends Controller
                 'inverter_brand' => 'required|max:20',
                 'inverter_brand_other' => 'max:30',
                 'drawing_file' => 'required|max:20',
-                'upload_drawing_file' => 'file|mimes:jpg,jpeg,png,pdf,xlsx,doc,docx|max:51200',
             ];
 
             if ($request->input('drawing_file') == 'yes') {
-                $rules['upload_drawing_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,xlsx,doc,docx|max:51200';
+                $rules['upload_drawing_file'] = 'required|file|mimes:jpg,jpeg,png,pdf,xlsx,doc,docx|max:5120';
             }
 
             $validator = Validator::make($request->all(), $rules, $messages);

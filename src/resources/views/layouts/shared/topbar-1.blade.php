@@ -14,9 +14,7 @@
 
         <!-- Logo(small screen) -->
         <div class="lg:hidden flex-nowrap">
-            <x-link href="{{ url('/') }}">
-                <img src="/svg/NEX-logo.svg" class="h-7 ss:h-8" alt="Logo" />
-            </x-link>
+            <img src="/svg/NEX-logo.svg" class="h-7 ss:h-8" alt="Logo" />
         </div>
 
         <!-- Top bar content -->
@@ -36,7 +34,7 @@
                     </x-link>
                 </li>
                 <li class="col-span-2">
-                    <x-link href="{{ url('admin/made-to-order') }}"
+                    <x-link href="{{ url('enquiry-form') }}"
                         class="flex justify-center transition hover:bg-primary hover:text-white lg:rounded-md bg-secondary lg:border-2 border-primary p-2">
                         enquiry
                     </x-link>
@@ -51,9 +49,9 @@
         </div>
 
         <!-- Logo(normal screen) -->
-        <x-link href="{{ url('/') }}" class="hidden lg:flex col-span-3 justify-center">
+        <div href="{{ url('/') }}" class="hidden lg:flex col-span-3 justify-center">
             <img src="/svg/NEX-logo.svg" class="lg:h-10 xl:h-12" alt="Logo" />
-        </x-link>
+        </div>
 
     </div>
 </nav>

@@ -20,7 +20,7 @@
                         </svg>
                     </div>
                 </div>
-                <a href="{{ url('admin/made-to-order') }}">
+                <a href="{{ url('/enquiry-form') }}">
                     <button
                         class="uppercase text-white bg-primary hover:bg-green-900 font-medium rounded-md text-sm px-4 py-2.5 max-h-11 focus:outline-none">
                         New Enquiry Form

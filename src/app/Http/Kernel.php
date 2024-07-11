@@ -65,7 +65,8 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'firebase' => \App\Http\Middleware\firebase::class,
+        'Admin' => \App\Http\Middleware\Admin::class,
+        'DefaultRole' => \App\Http\Middleware\DefaultRole::class,
         'pdf.access' => \App\Http\Middleware\PdfAccessMiddleware::class
     ];
 }

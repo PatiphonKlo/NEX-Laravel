@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="grid sm:grid-cols-2 my-5 gap-5 text-xs lg:text-base h-[80vh]">
-    <div class="h-full border-2 border-green-600 rounded-md shadow shadow-gray-400 lg:pt-1/4 flex flex-col items-center p-4 lg:p-10 gap-2">
-        <div class="flex flex-col lg:grid grid-cols-2 gap-2">
+    <div class="relative h-full border-2 border-green-600 rounded-md shadow shadow-gray-400 lg:pt-1/4 flex flex-col items-center p-4 lg:p-10 gap-2">
+        <div class="absolute top-0 left-0 mt-4 ml-4">
+            @include('pages/user/components/modal-spec-send')
+        </div>
+        <div class="flex flex-col lg:grid grid-cols-2 gap-2 mt-16">
             <div class="flex justify-center items-center">
                 <img src="{{$imageURL[0]}}" class="w-72 h-72" onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}'; this.className='w-60 border-2';">
             </div>

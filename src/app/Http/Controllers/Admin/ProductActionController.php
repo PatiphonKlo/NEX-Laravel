@@ -118,7 +118,6 @@ class ProductActionController extends Controller
                     $documentData['image_url'] = $imageURL;
                     $productId = array('product_id' => $document->id());
                     $productData[] = array_merge($documentData, $productId);
-                    
                 }
                 Cache::put('product_data', $productData, config('cache.cache_duration'));
             }
@@ -132,10 +131,10 @@ class ProductActionController extends Controller
     public function add(Request $request)
     {
         try {
-            
+
             $messages = [
                 'required' => 'This field is required.',
-                'mimes' => 'file jpg only'
+                'mimes' => 'file extension not valid',
             ];
 
             $validator = Validator::make($request->all(), [
@@ -144,7 +143,7 @@ class ProductActionController extends Controller
                 'product_model' => 'required|max:20',
                 'product_price' => 'required|numeric|min:0|digits_between:1,8',
                 'product_logistic_cost' => 'required|numeric|min:0|digits_between:1,6',
-                'product_assurance' => 'required|numeric|min:0|max:20',
+                'product_warranty' => 'required|numeric|min:0|max:20',
                 'product_down_payment' => 'required|numeric|min:0|max:100',
                 'product_after_install' => 'required|numeric|min:0|max:100',
                 'product_final_check' => 'required|numeric|min:0|max:100',
@@ -154,11 +153,11 @@ class ProductActionController extends Controller
                 'product_delivery_term' => 'required|numeric|min:0|digits_between:1,3',
                 'product_credit_day' => 'required|numeric|min:0|digits_between:1,3',
                 'product_discount' => 'required|numeric|min:0|max:100',
-                'product_picture' => 'required|mimes:jpg|max:2097152|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
-                'product_front_view' => 'mimes:jpg|max:2097152|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
-                'product_side_view' => 'mimes:jpg|max:2097152|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
-                'product_top_view' => 'mimes:jpg|max:2097152|dimensions:min_width=160,min_height=120,max_width=1600,max_height=1200',
-                'spec_sheet' => 'required|mimes:pdf|max:2097152'
+                'product_picture' => 'required|mimes:jpg|max:3072|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
+                'product_front_view' => 'mimes:jpg|max:3072|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
+                'product_side_view' => 'mimes:jpg|max:3072|dimensions:min_width=120,min_height=160,max_width=1200,max_height=1600',
+                'product_top_view' => 'mimes:jpg|max:3072|dimensions:min_width=160,min_height=120,max_width=1600,max_height=1200',
+                'spec_sheet' => 'required|mimes:pdf|max:3072'
             ], $messages);
 
             $validator->after(function ($validator) {
@@ -195,7 +194,7 @@ class ProductActionController extends Controller
                 'product_delivery_term' => (int)($request->product_delivery_term),
                 'product_credit_day' => (int)($request->product_credit_day),
                 'product_discount' => (int)($request->product_discount),
-                'product_assurance' => (int)($request->product_assurance),
+                'product_warranty' => (int)($request->product_warranty),
                 'assembly_part' => $request->assembly_part,
                 'technical_data' => $request->technical_data,
             ];
@@ -253,7 +252,8 @@ class ProductActionController extends Controller
             $model = $document->snapshot()->data()['product_model'];
             $messages = [
                 'required' => 'This field is required.',
-                'mimes' => 'file jpg only'
+                'mimes' => 'file extension not valid',
+                'max' => 'maximum file size is 2MB'
             ];
 
 
@@ -264,7 +264,7 @@ class ProductActionController extends Controller
                 'product_model_update' . $request->get('update_id') => 'required|max:20',
                 'product_price_update' . $request->get('update_id') => 'required|numeric|min:0|digits_between:1,8',
                 'product_logistic_cost_update' . $request->get('update_id') => 'required|numeric|min:0|digits_between:1,6',
-                'product_assurance_update' . $request->get('update_id') => 'required|numeric|min:0|max:20',
+                'product_warranty_update' . $request->get('update_id') => 'required|numeric|min:0|max:20',
                 'product_down_payment_update' . $request->get('update_id') => 'required|numeric|min:0|max:100',
                 'product_after_install_update' . $request->get('update_id') => 'required|numeric|min:0|max:100',
                 'product_final_check_update' . $request->get('update_id') => 'required|numeric|min:0|max:100',
@@ -274,11 +274,11 @@ class ProductActionController extends Controller
                 'product_delivery_term_update' . $request->get('update_id') => 'required|numeric|min:0|digits_between:1,3',
                 'product_credit_day_update' . $request->get('update_id') => 'required|numeric|min:0|digits_between:1,3',
                 'product_discount_update' . $request->get('update_id') => 'required|numeric|min:0|max:100',
-                'product_picture_update' . $request->get('update_id') => 'mimes:jpg|max:2097152|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
-                'product_front_view_update' . $request->get('update_id') => 'mimes:jpg|max:2097152|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
-                'product_side_view_update' . $request->get('update_id') => 'mimes:jpg|max:2097152|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
-                'product_top_view_update' . $request->get('update_id') => 'mimes:jpg|max:2097152|dimensions:min_width=160,min_height=120,max_width=1600,max_height=1200',
-                'spec_sheet_update' . $request->get('update_id') => 'mimes:pdf|max:2097152',
+                'product_picture_update' . $request->get('update_id') => 'mimes:jpg|max:3072|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
+                'product_front_view_update' . $request->get('update_id') => 'mimes:jpg|max:3072|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
+                'product_side_view_update' . $request->get('update_id') => 'mimes:jpg|max:3072|dimensions:min_width=100,min_height=100,max_width=1200,max_height=1600',
+                'product_top_view_update' . $request->get('update_id') => 'mimes:jpg|max:3072|dimensions:min_width=160,min_height=120,max_width=1600,max_height=1200',
+                'spec_sheet_update' . $request->get('update_id') => 'mimes:pdf|max:3072',
                 'update_id' => 'required',
             ]);
 
@@ -300,7 +300,7 @@ class ProductActionController extends Controller
                 'product_group' => $request->get('product_group_update' . $request->update_id),
                 'product_model' => $request->get('product_model_update' . $request->update_id),
                 'product_price' => (int)($request->get('product_price_update' . $request->update_id)),
-                'product_logistic_cost' => (int)($request->get('product_logistic_cost' . $request->update_id)),
+                'product_logistic_cost' => (int)($request->get('product_logistic_cost_update' . $request->update_id)),
                 'product_down_payment' => (int)($request->get('product_down_payment_update' . $request->update_id)),
                 'product_after_install' => (int)($request->get('product_after_install_update' . $request->update_id)),
                 'product_final_check' => (int)($request->get('product_final_check_update' . $request->update_id)),
@@ -308,7 +308,7 @@ class ProductActionController extends Controller
                 'product_delivery_term' => (int)($request->get('product_delivery_term_update' . $request->update_id)),
                 'product_credit_day' => (int)($request->get('product_credit_update' . $request->update_id)),
                 'product_discount' => (int)($request->get('product_discount_update' . $request->update_id)),
-                'product_assurance' => (int)($request->get('product_assurance_update' . $request->update_id)),
+                'product_warranty' => (int)($request->get('product_warranty_update' . $request->update_id)),
                 'assembly_part' => $request->get('assembly_part_update' . $request->update_id),
                 'technical_data' => $request->get('technical_data_update' . $request->update_id),
                 'edited_at' => new Timestamp(new DateTime()),
@@ -397,6 +397,31 @@ class ProductActionController extends Controller
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('error', 'Error occurred.');
+        }
+    }
+
+    public function viewSpecPDF($key)
+    {
+        try {
+            $document = $this->firestore->collection(config('firebase.collection.product'))->document($key);
+            $model = $document->snapshot()->data()['product_model'];
+            $bucketName = config('firebase.projects.app.storage.default_bucket');
+            $bucket = $this->storage->getBucket($bucketName);
+            $expiresAt = new DateTime('15 minutes');
+
+            $sheetRef = $bucket->object(config('firebase.storage_path.product_spec') . '/' . $model . '-spec-sheet.pdf');
+            if ($sheetRef->exists()) {
+                $pathRef = config('firebase.storage_path.product_spec') . '/' . $model . '-spec-sheet.pdf';
+                $pdfURL = $bucket->object($pathRef)->signedUrl($expiresAt, [
+                    'version' => 'v4',
+                ]);
+                return redirect()->away($pdfURL);
+            } else {
+                return redirect()->back()->with('error', 'PDF not found.');
+            }
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return response()->json(['error' => 'Error occurred'], 500);
         }
     }
 }

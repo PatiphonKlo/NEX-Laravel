@@ -14,45 +14,10 @@ use Illuminate\Support\Facades\Validator;
 class ClientController extends Controller
 {
     protected $firestore;
-    protected $realtime;
-    protected $storage;
 
     public function __construct()
     {
         $this->firestore = (new Firebase)->firestoreDb;
-        $this->realtime = (new Firebase)->realtimeDb;
-        $this->storage = (new Firebase)->cloudstorage;
-    }
-
-    public function view($group, $model)
-    {
-        try {
-            $productDocument = $this->firestore->collection(config('firebase.collection.product'))->where('product_model', '=', $model)->documents()->rows()[0];
-            $productId = $productDocument->id();
-            $productData = $productDocument->data() ?? [];
-
-            $technicalData = [];
-            $productTechnical = $productDocument->data()['technical_data'];
-            if (isset($productTechnical)) {
-                foreach ($productTechnical as $item) {
-                    $technicalDocument = $this->firestore->collection(config('firebase.collection.technical_data'))->orderBy('technical_component')->documents();
-                    if (empty($technicalDocument)) {
-                        return view('pages/user/technical-data', compact('imageURL', 'model', 'group', 'technicalData'));
-                    } else {
-                        $data = $this->firestore->collection(config('firebase.collection.technical_data'))->document($item)->snapshot()->data();
-                        $technicalData[] = [
-                            'technical_component' => $data['technical_component'],
-                            'specification' => $data['specification'],
-                        ];
-                    }
-                }
-            }
-
-            return view('pages/user/client-add', compact('productData', 'model', 'group', 'technicalData'));
-        } catch (\Exception $exception) {
-            Log::error($exception->getMessage());
-            return back()->with('error', 'Error occurred.');
-        }
     }
 
     public function add(Request $request, $model)
@@ -76,7 +41,7 @@ class ClientController extends Controller
                 'created_at' => new Timestamp(new DateTime()),
                 'created_by' => Session::get('uid') ?? null,
                 'edited_at' => new Timestamp(new DateTime()),
-                'edited_by' => Session::get('uid') ?? null ,
+                'edited_by' => Session::get('uid') ?? null,
                 'client_contact_name' => $request->name,
                 'client_phone_number' => $request->phone,
                 'client_email' => $request->email,
@@ -84,17 +49,20 @@ class ClientController extends Controller
             ];
 
             $newDocument = $this->firestore->collection(config('firebase.collection.client'))->newDocument();
-            $postKey = $newDocument->id();
-            $setDocument = $this->firestore->collection(config('firebase.collection.client'))->document($postKey)->set($postData);
+            $clientId = $newDocument->id();
+            $setDocument = $this->firestore->collection(config('firebase.collection.client'))->document($clientId)->set($postData);
 
-            return redirect()->route('view.request', [$model, $postKey]);
+            return [
+                'model' => $model, 
+                'clientId' => $clientId
+            ];
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('error', 'Error occurred.');
         }
     }
 
-    public function edit($model, $postKey)
+    public function edit($model, $clientId)
     {
         try {
             $productDocument = $this->firestore->collection(config('firebase.collection.product'))->where('product_model', '=', $model)->documents()->rows()[0];
@@ -117,10 +85,10 @@ class ClientController extends Controller
                     }
                 }
             }
-            $clientData = $this->firestore->collection(config('firebase.collection.client'))->document($postKey)->snapshot()->data();
+            $clientData = $this->firestore->collection(config('firebase.collection.client'))->document($clientId)->snapshot()->data();
 
 
-            return view('pages/user/client-edit', compact('productData', 'model', 'technicalData', 'clientData', 'postKey'));
+            return view('pages/user/client-edit', compact('productData', 'model', 'technicalData', 'clientData', 'clientId'));
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('error', 'Error occurred.');
@@ -146,7 +114,7 @@ class ClientController extends Controller
 
             $postData = [
                 'edited_at' => new Timestamp(new DateTime()),
-                'edited_by' => Session::get('uid') ?? null ,
+                'edited_by' => Session::get('uid') ?? null,
                 'client_contact_name' => $request->name,
                 'client_phone_number' => $request->phone,
                 'client_email' => $request->email,
@@ -154,10 +122,10 @@ class ClientController extends Controller
             ];
 
             $newDocument = $this->firestore->collection(config('firebase.collection.client'))->newDocument();
-            $postKey = $newDocument->id();
-            $setDocument = $this->firestore->collection(config('firebase.collection.client'))->document($postKey)->set($postData, ['merge' => true]);
+            $clientId = $newDocument->id();
+            $setDocument = $this->firestore->collection(config('firebase.collection.client'))->document($clientId)->set($postData, ['merge' => true]);
 
-            return redirect()->route('view.request', [$model, $postKey])->with('status', 'Edited successfully');
+            return redirect()->route('view.request', [$model, $clientId])->with('status', 'Edited successfully');
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('error', 'Error occurred.');

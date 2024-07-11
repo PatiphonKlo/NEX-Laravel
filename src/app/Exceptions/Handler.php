@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -25,6 +26,16 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->reportable(function (PostTooLargeException $exception) {
+            // สามารถเพิ่ม logic เพื่อบันทึกข้อผิดพลาดหรือส่งการแจ้งเตือนได้
+        });
+
+        $this->renderable(function (PostTooLargeException $exception, $request) {
+            return response()->json([
+                'error' => 'Uploaded file is too large',
+            ], 413); // 413: Payload Too Large
         });
     }
 }

@@ -108,15 +108,15 @@
                             @enderror
                         </div>
                         <div class="col-span-1">
-                            <label for="product_assurance_update{{ $key }}"
-                                class="block mb-2 text-sm font-medium text-gray-900">Assurance
+                            <label for="product_warranty_update{{ $key }}"
+                                class="block mb-2 text-sm font-medium text-gray-900">Warranty
                                 Year</label>
                             <input type="number"
-                                value="{{ old('product_assurance_update' . $key) ?? $quotation['product_assurance'] }}"
-                                name="product_assurance_update{{ $key }}" id="product_assurance_update"
+                                value="{{ old('product_warranty_update' . $key) ?? $quotation['product_warranty'] }}"
+                                name="product_warranty_update{{ $key }}" id="product_warranty_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="ex . 1">
-                            @error('product_assurance_update' . $key)
+                            @error('product_warranty_update' . $key)
                                 <p class="mt-2 text-sm text-red-600 whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
@@ -251,7 +251,7 @@
         $errors->has('product_group_update' . $key) ||
         $errors->has('product_model_update' . $key) ||
         $errors->has('product_price_update' . $key) ||
-        $errors->has('product_assurance_update' . $key) ||
+        $errors->has('product_warranty_update' . $key) ||
         $errors->has('product_down_payment_update' . $key) ||
         $errors->has('product_after_install_update' . $key) ||
         $errors->has('product_final_check_update' . $key) ||

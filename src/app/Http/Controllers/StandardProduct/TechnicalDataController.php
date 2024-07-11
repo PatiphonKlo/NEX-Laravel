@@ -4,9 +4,13 @@ namespace App\Http\Controllers\StandardProduct;
 
 use App\Http\Controllers\Controller;
 use App\Services\Firebase;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class TechnicalDataController extends Controller
 {
@@ -63,6 +67,58 @@ class TechnicalDataController extends Controller
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('error', 'Error occurred.');
+        }
+    }
+
+    public function sendPDF(Request $request, $group, $model)
+    {
+        try {
+            $productRef = $this->firestore->collection(config('firebase.collection.product'))->where('product_model', '=', $model)->documents()->rows()[0];
+            $key = $productRef->id();
+
+            $messages = [
+                'required' => 'This field is required.',
+            ];
+
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|max:30|email',
+                'name' => 'required|max:30',
+            ]);
+
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput()->with('error', 'Error, email is not sent');
+            }
+
+            $document = $this->firestore->collection(config('firebase.collection.product'))->document($key);
+            $model = $document->snapshot()->data()['product_model'];
+            $bucketName = config('firebase.projects.app.storage.default_bucket');
+            $bucket = $this->storage->getBucket($bucketName);
+            $expiresAt = new DateTime('15 minutes');
+
+            $pathRef = config('firebase.storage_path.product_spec') . '/' . $model . '-spec-sheet.pdf';
+            $sheetRef = $bucket->object($pathRef);
+
+            if ($sheetRef->exists()) {
+                $tempPath = tempnam(sys_get_temp_dir(), 'pdf');
+                $pdfStream = $sheetRef->downloadAsStream();
+                file_put_contents($tempPath, $pdfStream->getContents());
+                $data["email"] = $request->email;
+                $data["name"] = $request->name;
+            
+                Mail::send('layouts.mail', compact('data'), function ($message) use ($data, $tempPath) {
+                    $message->to($data["email"], $data["name"])
+                            ->subject('Specification Sheet')
+                            ->attach($tempPath, ['as' => 'Specification-Sheet.pdf']);
+                });
+            
+                unlink($tempPath); 
+                return redirect('standard-product')->with('status', 'Email has been successfully sent');
+            } else {
+                return redirect()->back()->with('error', 'PDF not found.');
+            }
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage());
+            return redirect('standard-product')->withInput()->with('error', 'Error occurred.');
         }
     }
 }

@@ -14,7 +14,7 @@
         <div id="overlay-update-product-{{ $key }}"
             class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
             <div
-                class="p-5 relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-3xl lg:max-w-6xl">
+                class="p-5 relative transform rounded-lg bg-white text-left shadow-xl transition-all h-160 sm:max-w-3xl lg:max-w-6xl">
 
                 <!-- Modal header -->
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5">
@@ -44,17 +44,37 @@
                                 Sheet</label>
                             <input accept=".pdf"
                                 class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                                name="spec_sheet_update{{ $key }}" type="file">
+                                name="spec_sheet_update{{ $key }}" type="file" onchange="validateFileSize(this, '{{ $key }}')">
+                            <p id="file-size-error{{$key}}" class="mt-2 text-sm text-danger-normal whitespace-normal"
+                                style="display:none;">File must not exceed 2MB</p>
                             @error('spec_sheet_update' . $key)
                             <p class="mt-2 text-sm text-danger-normal whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <script>
+                            function validateFileSize(input, key) {
+                                const maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+                                const fileSizeError = document.getElementById('file-size-error' + key);
+                        
+                                if (input.files && input.files[0]) {
+                                    if (input.files[0].size > maxFileSize) {
+                                        fileSizeError.style.display = 'block';
+                                        fileSizeError.textContent = 'File size must not exceed 2MB';
+                                        input.value = ''; // Clear the input if the file is too large
+                                    } else {
+                                        fileSizeError.style.display = 'none';
+                                    }
+                                }
+                            }
+                        </script>
+
                         <div class="col-span-2">
                             <label for="product_name_update{{ $key }}"
                                 class="block mb-2 text-sm font-medium text-gray-900">
                                 Product Name</label>
                             <input type="text"
-                                value="{{ old('product_name_update' . $key) ?? $product['product_name'] }}"
+                                value="{{ old('product_name_update' . $key) ?? $product['product_name'] ?? '' }}"
                                 name="product_name_update{{ $key }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2"
                                 placeholder="Type product name">
@@ -261,7 +281,7 @@
                             <label for="product_price_validity_update"
                                 class="block mb-2 text-sm font-medium text-gray-900">Price Validity</label>
                             <input type="number"
-                                value="{{ old('product_price_validity_update' . $key) ?? $product['product_price_validity'] }}"
+                                value="{{ old('product_price_validity_update' . $key) ?? $product['product_price_validity'] ?? '' }}"
                                 name="product_price_validity_update{{ $key }}" id="product_price_validity_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 10 (Days)">
@@ -273,7 +293,7 @@
                             <label for="product_delivery_term_update"
                                 class="block mb-2 text-sm font-medium text-gray-900">Delivery Term</label>
                             <input type="number"
-                                value="{{ old('product_delivery_term_update' . $key) ?? $product['product_delivery_term'] }}"
+                                value="{{ old('product_delivery_term_update' . $key) ?? $product['product_delivery_term'] ?? '' }}"
                                 name="product_delivery_term_update{{ $key }}" id="product_delivery_term_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 45 (Days)">
@@ -286,7 +306,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900">Credit
                                 Days</label>
                             <input type="number"
-                                value="{{ old('product_credit_day_update' . $key) ?? $product['product_credit_day'] }}"
+                                value="{{ old('product_credit_day_update' . $key) ?? $product['product_credit_day'] ?? '' }}"
                                 name="product_credit_day_update{{ $key }}" id="product_credit_day_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 30 (Days)">
@@ -299,7 +319,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900">Discount
                                 (%)</label>
                             <input type="number"
-                                value="{{ old('product_discount_update' . $key) ?? $product['product_discount'] }}"
+                                value="{{ old('product_discount_update' . $key) ?? $product['product_discount'] ?? '' }}"
                                 name="product_discount_update{{ $key }}" id="product_discount_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 0">
@@ -311,7 +331,7 @@
                             <label for="product_price_update" class="block mb-2 text-sm font-medium text-gray-900">Price
                                 (THB)</label>
                             <input type="number"
-                                value="{{ old('product_price_update' . $key) ?? $product['product_price'] }}"
+                                value="{{ old('product_price_update' . $key) ?? $product['product_price'] ?? '' }}"
                                 name="product_price_update{{ $key }}" id="product_price_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 300000">
@@ -320,15 +340,15 @@
                             @enderror
                         </div>
                         <div class="col-span-1">
-                            <label for="product_assurance_update{{ $key }}"
-                                class="block mb-2 text-sm font-medium text-gray-900">Assurance
+                            <label for="product_warranty_update{{ $key }}"
+                                class="block mb-2 text-sm font-medium text-gray-900">Warranty
                                 (Year)</label>
                             <input type="number"
-                                value="{{ old('product_assurance_update' . $key) ?? $product['product_assurance'] }}"
-                                name="product_assurance_update{{ $key }}" id="product_assurance_update"
+                                value="{{ old('product_warranty_update' . $key) ?? $product['product_warranty'] ?? '' }}"
+                                name="product_warranty_update{{ $key }}" id="product_warranty_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 1">
-                            @error('product_assurance_update' . $key)
+                            @error('product_warranty_update' . $key)
                             <p class="mt-2 text-sm text-red-600 whitespace-normal">{{ $message }}</p>
                             @enderror
                         </div>
@@ -340,7 +360,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900">Down
                                 Payment (%)</label>
                             <input type="number"
-                                value="{{ old('product_down_payment_update' . $key) ?? $product['product_down_payment'] }}"
+                                value="{{ old('product_down_payment_update' . $key) ?? $product['product_down_payment'] ?? '' }}"
                                 name="product_down_payment_update{{ $key }}" id="product_down_payment_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 25">
@@ -353,7 +373,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900">After
                                 Install (%)</label>
                             <input type="number"
-                                value="{{ old('product_after_install_update' . $key) ?? $product['product_after_install'] }}"
+                                value="{{ old('product_after_install_update' . $key) ?? $product['product_after_install'] ?? '' }}"
                                 name="product_after_install_update{{ $key }}" id="product_after_install_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 40">
@@ -366,7 +386,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900">Final
                                 Check (%)</label>
                             <input type="number"
-                                value="{{ old('product_final_check_update' . $key) ?? $product['product_final_check'] }}"
+                                value="{{ old('product_final_check_update' . $key) ?? $product['product_final_check'] ?? '' }}"
                                 name="product_final_check_update{{ $key }}" id="product_final_check_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 35">
@@ -380,7 +400,7 @@
                                 Logistic & Training (THB)
                             </label>
                             <input type="number"
-                                value="{{ old('product_logistic_cost_update' . $key) ?? $product['product_logistic_cost'] }}"
+                                value="{{ old('product_logistic_cost_update' . $key) ?? $product['product_logistic_cost'] ?? '' }}"
                                 name="product_logistic_cost_update{{ $key }}" id="product_logistic_cost_update"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                                 placeholder="e.g. 3500">
@@ -525,7 +545,7 @@ $errors->has('product_name_update' . $key) ||
 $errors->has('product_group_update' . $key) ||
 $errors->has('product_model_update' . $key) ||
 $errors->has('product_price_update' . $key) ||
-$errors->has('product_assurance_update' . $key) ||
+$errors->has('product_warranty_update' . $key) ||
 $errors->has('product_down_payment_update' . $key) ||
 $errors->has('product_after_install_update' . $key) ||
 $errors->has('product_final_check_update' . $key) ||
