@@ -20,7 +20,7 @@ use App\Http\Controllers\PdfAccessController;
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
-    $showModal = session('auth_failed', false);
+    $showModal = Session::get('auth_failed', false);
     $authenticated = Session::has('uid');
     $role = Session::get('role');
     return view('pages/user/home', (compact('showModal', 'authenticated', 'role')));
