@@ -24,9 +24,9 @@
         </div>
     </div>
 
-    <div id="loginModal" class="hidden">
+    {{-- <div id="loginModal" class="hidden">
         @include('pages/authentication/modal-login')
-    </div>
+    </div> --}}
 
     <div class="fixed top-0 right-0 p-1 sm:p-4 flex items-center justify-center gap-4">
         <a
@@ -62,7 +62,7 @@
                 </svg>
             @endif
         </div> --}}
-        
+
     </div>
 
     @vite(['resources/js/modal-auth.js','resources/js/modal-logout.js'])

@@ -75,27 +75,6 @@
         </div>
     </div>
 
-    <div id="loginModal" class="hidden">
-        <?php echo $__env->make('pages/authentication/modal-login', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    </div>
-
-    <div class="fixed top-0 right-0 p-1 sm:p-4 flex items-center justify-center gap-4">
-        <a
-            href="https://www.appsheet.com/start/aef75d1b-a90a-4961-81fb-ba43f29d27b2?platform=desktop#viewStack[0][identifier][Type]=Control&viewStack[0][identifier][Name]=Inventory(%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%B2)&appName=StockStoreV1-11909385">
-            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-orange-200">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                    fill="#000000">
-                    <path
-                        d="M200-80q-33 0-56.5-23.5T120-160v-451q-18-11-29-28.5T80-680v-120q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v120q0 23-11 40.5T840-611v451q0 33-23.5 56.5T760-80H200Zm0-520v440h560v-440H200Zm-40-80h640v-120H160v120Zm200 280h240v-80H360v80Zm120 20Z" />
-                </svg>
-            </div>
-        </a>
-
-        
-        
-    </div>
-
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/js/modal-auth.js','resources/js/modal-logout.js']); ?>
 <?php $__env->stopSection(); ?>
 
 

@@ -25,14 +25,14 @@ class Admin
         if (!Session::has('uid')) {
             Log::info('User not authenticated. Redirecting to login.');
             Session::flash('auth_failed', true);
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
 
         $role = Session::get('role');
 
         if ($role !== 'admin') {
             Log::info('Access denied for user role: ' . $role);
-            return redirect()->route('home')->with('error','Access Denied');
+            return redirect()->route('login')->with('error','Access Denied');
         }
 
         return $next($request);

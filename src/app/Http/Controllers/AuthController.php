@@ -32,7 +32,7 @@ class AuthController extends Controller
                 $userRole = $userDocument['role'];  // ตัวแปร $userRole นี้ควรเป็น string
                 Session::put('role', $userRole);
             } else {
-                Session::put('role', 'undefined');
+                Session::put('role', 'guest');
             }
             Session::put('uid', $loginUid);
 

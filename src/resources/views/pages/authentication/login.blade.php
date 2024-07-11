@@ -32,12 +32,10 @@
                         </button>
                     </div>
                 </x-form>
-                <a href="{{ url('standard-product') }}">
-                    <button
-                        class="uppercase text-center w-full bg-primary hover:bg-green-900 text-white font-bold py-2 px-4 rounded-lg">
-                        BACK TO STANDARD PRODUCT
-                    </button>
-                </a>
+                <x-go-back-button
+                    class="uppercase w-full bg-primary hover:bg-green-900 text-white font-bold py-2 px-4 rounded-lg">
+                    back
+                </x-go-back-button>
             </div>
         </div>
     </div>
