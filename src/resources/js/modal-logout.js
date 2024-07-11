@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("logoutModal");
     var button = document.getElementById("logoutButton");
-    var closeModalButton = document.getElementById("closeModalButton"); 
 
     button.addEventListener("click", function (event) {
         modal.classList.remove("hidden");
-        event.stopPropagation(); // ป้องกันการเกิด event bubbling
+        event.stopPropagation(); 
     });
 
     window.addEventListener("click", function (event) {
