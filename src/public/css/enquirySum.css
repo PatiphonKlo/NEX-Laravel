@@ -1,0 +1,29 @@
+div table {
+    border: 1px solid;
+    font-family: 'THSarabunNew';
+}
+table {
+    width: 100%;
+    table-layout: auto; 
+    font-size: 10pt;
+    border: 1px solid;
+    border-collapse: collapse;
+    word-wrap: break-word;
+}
+th {    
+    /* border: 1px solid; */
+    padding: 2px 3px 2px 3px;
+    max-height: 25px;
+    background-color: rgb(204, 204, 204);
+    border-collapse: collapse;
+}
+td#header {
+    background-color: rgba(204, 204, 204, 0.664);
+}
+td {
+    padding: 0px 3px;
+    vertical-align: middle;
+    word-wrap: break-word;
+    height: 18px;
+    border: 1px solid;
+}

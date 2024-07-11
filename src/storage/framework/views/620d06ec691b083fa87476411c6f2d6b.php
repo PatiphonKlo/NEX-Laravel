@@ -1,0 +1,1 @@
+<h1>hello</h1><?php /**PATH C:\miscibles-platform\src\resources\views/layouts/pdf/test.blade.php ENDPATH**/ ?>
