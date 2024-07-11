@@ -115,8 +115,6 @@
         </div>
     </div>
 
-    <div id="auth-data" style="display:none;"><?php echo json_encode(session('isAuthenticated', false), 512) ?></div>
-
     <?php echo app('Illuminate\Foundation\Vite')(['resources/js/modal-auth.js','resources/js/modal-logout.js']); ?>
 <?php $__env->stopSection(); ?>
 

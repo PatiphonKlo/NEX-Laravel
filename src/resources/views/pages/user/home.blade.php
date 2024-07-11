@@ -64,8 +64,6 @@
         </div>
     </div>
 
-    <div id="auth-data" style="display:none;">@json(session('isAuthenticated', false))</div>
-
     @vite(['resources/js/modal-auth.js','resources/js/modal-logout.js'])
 @endsection
 
