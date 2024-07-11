@@ -1,0 +1,976 @@
+1720689119s:55072:"<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+<title>NEX | Made To Order</title>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta content="A platform for industrial mixing tank design" name="description">
+<meta content="Miscible Technology Co., Ltd." name="author">
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="/images/favicon.ico">
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/resources/css/app.css" />    </head>
+
+<body>
+
+        <div id="status-alert-client-side" class="hidden relative z-40">
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-50 transition-opacity"></div>
+    <div class="text-center fixed inset-0 top-5 z-10 w-screen">
+        <div class="flex min-h-full justify-center p-4  items-start sm:p-0">
+            <div class="p-5 relative transform rounded-lg shadow-xl transition-all w-full sm:max-w-xl md:max-w-2xl lg:max-w-4xl border-t-4 flex items-center justify-center text-red-800  border-red-800 bg-red-50">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <p class="ms-3 text-sm font-medium">
+                </p>
+                <button type="button" onclick="dismissAlert()" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2  p-1.5 inline-flex items-center justify-center h-8 w-8 bg-red-50 text-red-900 focus:ring-red-400 hover:bg-red-200">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function dismissAlert() {
+        const modal = document.getElementById('status-alert-client-side');
+        modal.classList.add('hidden');
+    }
+
+</script>
+
+    <main class="flex-grow p-4 lg:p-8">
+        <!-- Top bar -->
+<nav class="font-semibold uppercase">
+    <div class="max-w-screen flex flex-wrap lg:grid grid-cols-12 lg:gap-5 items-center justify-between mx-auto">
+
+        <!-- Hamberger button -->
+        <button data-collapse-toggle="navbar-default" type="button"
+            class="inline-flex items-center w-10 h-10 justify-center text-sm text-gray-900 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none"
+            aria-controls="navbar-default" aria-expanded="false">
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+
+        <!-- Logo(small screen) -->
+        <div class="lg:hidden flex-nowrap">
+            <img src="/svg/NEX-logo.svg" alt="NEX logo" class="h-7 ss:h-8" />
+        </div>
+
+        <!-- Top bar content -->
+        <div id="navbar-default" class="hidden w-full lg:block lg:w-auto col-span-9">
+            <ul
+                class="lg:grid grid-cols-9 gap-3 lg:gap-5  mt-1 rounded-md lg:flex-row lg:mt-0 bg-secondary lg:bg-white">
+                <li class="col-span-3">
+                    <div
+                        class="text-white flex justify-center rounded-t-md lg:rounded-md bg-primary lg:border-2 border-primary p-2">
+                        Made To Order
+                    </div>
+                </li>
+                <li class="hidden lg:block col-span-3">
+                    <div class="flex justify-center bg-primary text-white lg:rounded-md lg:border-2 border-primary p-2">
+                        Enquiry Form
+                    </div>
+                </li>
+                <li>
+                    <script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+
+<button onclick="goBack()" class="uppercase w-full text-center font-inter font-semibold flex justify-center transition hover:bg-primary hover:text-white lg:rounded-md bg-secondary lg:border-2 border-primary p-2 class="uppercase w-full text-center font-inter font-semibold flex justify-center transition hover:bg-primary hover:text-white lg:rounded-md bg-secondary lg:border-2 border-primary p-2">
+    back
+</button>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:8000" class="flex justify-center transition hover:bg-primary hover:text-white lg:rounded-md rounded-b-md bg-secondary lg:border-2 border-primary p-2 href="http://127.0.0.1:8000" class="flex justify-center transition hover:bg-primary hover:text-white lg:rounded-md rounded-b-md bg-secondary lg:border-2 border-primary p-2"">
+    home
+</a>                </li>
+            </ul>
+        </div>
+
+        <!-- sub title(small screen) -->
+        <div class="mt-2 lg:hidden w-full bg-primary rounded-md">
+            <h1 class="font-semibold text-center text-white p-2.5">Enquiry Form</h1>
+        </div>
+
+        <!-- Logo(normal screen) -->
+        <div href="http://127.0.0.1:8000" class="hidden lg:flex col-start-11 col-span-2 justify-end items-center">
+            <img src="/svg/NEX-logo.svg" alt="NEX logo" class="h-12 w-full" />
+        </div>
+
+    </div>
+</nav>                <div>
+    <form method=POST method="POST" action="http://127.0.0.1:8000/admin/enquiry-post" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="biQ6l6BK9bTrZYt13tGF4YiTDwPR2iOONfcxAgI0" autocomplete="off">        
+        <section class="bg-gray-50 rounded-md mt-4 shadow-md">
+        <div class="flex bg-gray-100 rounded-t-md py-2 px-6 shadow-sm">
+            <h2 class="flex-1 text-base font-semibold uppercase">Contact Information</h2>
+            <p class="mt-1 text-gray-500 font-normal uppercase">Complete all field</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+            <div>
+                <label class="block font-normal text-md mb-2" for="company">
+    Company Name
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="company" type="text" name="company" value="">
+            </div>
+            <div>
+                <label class="block font-normal text-md mb-2" for="contact_name">
+    Contactor Name
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="contact_name" type="text" name="contact_name" value="">
+            </div>
+            <div>
+                <label class="block font-normal text-md mb-2" for="email_address">
+    Contact Email
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="email_address" type="text" name="email_address" value="">
+            </div>
+            <div>
+                <label class="block font-normal text-md mb-2" for="phone">
+    Phone Number
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="phone" type="text" name="phone" value="">
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-md mt-8 shadow-md">
+        <div class="flex bg-gray-100 rounded-t-md py-2 px-6 shadow-sm">
+            <h2 class="flex-1 text-base font-semibold uppercase">Mixing Tasks</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-6">
+            <div class="col-span-2">
+                <label class="block font-normal text-md mb-2" for="chemical_substances">
+    Chemical Feed
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="chemical_substances" type="text" name="chemical_substances" value="" placeholder="ex. water, oil, NaOH">
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="base_type">Base Type</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="water_base" name="base_type" value="water base" class="text-primary focus:ring-white" onclick="toggleOptionalInput('base_type', 'base_type_other')" >
+            <span class="ml-2">Water Base</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="oil_base" name="base_type" value="oil base" class="text-primary focus:ring-white" onclick="toggleOptionalInput('base_type', 'base_type_other')" >
+            <span class="ml-2">Oil Base</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="solvent_base" name="base_type" value="solvent base" class="text-primary focus:ring-white" onclick="toggleOptionalInput('base_type', 'base_type_other')" >
+            <span class="ml-2">Solvent Base</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="base_type" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('base_type', 'base_type_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="base_type_other" name="base_type_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 grid grid-rows-2 gap-y-4">
+                <div>
+                    <label class="block font-normal text-md mb-2" for="amount_of_liquid_liquid_type">
+    Amount of liquid-liquid
+</label>                    <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="amount_of_liquid_liquid_type" type="number" name="amount_of_liquid_liquid_type" value="">
+                </div>
+                <div>
+                    <label class="block font-normal text-md mb-2" for="amount_of_solid_liquid_type">
+    Amount of solid-liquid
+</label>                    <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="amount_of_solid_liquid_type" type="number" name="amount_of_solid_liquid_type" value="">
+                </div>
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="liquid_liquid_miscible">Liquid-liquid miscible</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="miscible" name="liquid_liquid_miscible" value="miscible" class="text-primary focus:ring-white" onclick="toggleOptionalInput('liquid_liquid_miscible', 'liquid_liquid_miscible_other')" >
+            <span class="ml-2">Miscible</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="immiscible" name="liquid_liquid_miscible" value="immiscible" class="text-primary focus:ring-white" onclick="toggleOptionalInput('liquid_liquid_miscible', 'liquid_liquid_miscible_other')" >
+            <span class="ml-2">Immiscible</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="liquid_liquid_miscible" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('liquid_liquid_miscible', 'liquid_liquid_miscible_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="liquid_liquid_miscible_other" name="liquid_liquid_miscible_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="solid_liquid_miscible">Percentage of Solid (Solid-Liquid Mixing)</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="miscible" name="solid_liquid_miscible" value="miscible" class="text-primary focus:ring-white" onclick="toggleOptionalInput('solid_liquid_miscible', 'solid_liquid_miscible_other')" >
+            <span class="ml-2">Miscible</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="immiscible" name="solid_liquid_miscible" value="immiscible" class="text-primary focus:ring-white" onclick="toggleOptionalInput('solid_liquid_miscible', 'solid_liquid_miscible_other')" >
+            <span class="ml-2">Immiscible</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="solid_liquid_miscible" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('solid_liquid_miscible', 'solid_liquid_miscible_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="solid_liquid_miscible_other" name="solid_liquid_miscible_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="solid_particle">
+    Percentage of Slurry (Solid Suspension)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="solid_particle" type="number" name="solid_particle" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="slurry_storage">
+    Percentage of Slurry (Solid Suspension)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="slurry_storage" type="number" name="slurry_storage" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="solid_liquid_dispersion">
+    Percentage of Solid (Solid-Liquid Dispersion)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="solid_liquid_dispersion" type="number" name="solid_liquid_dispersion" value="">
+            </div>
+            <div class="col-span-2">
+                <label class="block font-normal text-md mb-2" for="mixing_reaction">
+    Mixing reaction
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="mixing_reaction" type="text" name="mixing_reaction" value="" placeholder="ex. A+B->C, A+B<->C">
+            </div>
+            <div class="col-span-2">
+                <label class="block font-normal text-md mb-2" for="mixing_annotation">
+    Remark
+</label>                <textarea rows="3"  class="text-sm p-4 rounded-md border-none border-gray-300 shadow-sm w-full" id="mixing_annotation" name="mixing_annotation" value=""></textarea>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-md mt-8 shadow-md">
+        <div class="flex bg-gray-100 rounded-t-md py-2 px-6 shadow-sm">
+            <h2 class="flex-1 text-base font-semibold uppercase">Liquid properties</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-6">
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="max_viscosity">
+    Maximum Viscosity (mPa·s)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="max_viscosity" type="number" name="max_viscosity" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="max_density">
+    Maximum density (kg/m³)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="max_density" type="number" name="max_density" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="heating">Heating Required</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="heating_required" name="heating" value="heating required" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heating', 'heating_other')" >
+            <span class="ml-2">Heating required</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="no_heating_required" name="heating" value="no heating required" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heating', 'heating_other')" >
+            <span class="ml-2">No heating required</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="heating" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heating', 'heating_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="heating_other" name="heating_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="heater">Heating Source</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="steam" name="heater" value="steam" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heater', 'heater_other')" >
+            <span class="ml-2">Steam</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="heater" name="heater" value="heater" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heater', 'heater_other')" >
+            <span class="ml-2">Heater</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="gas" name="heater" value="gas" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heater', 'heater_other')" >
+            <span class="ml-2">Gas</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="heater" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('heater', 'heater_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="heater_other" name="heater_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="heating_temperature">
+    Heating Source Temperature (°C)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="heating_temperature" type="number" name="heating_temperature" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="heating_pressure">
+    Heating Source Pressure (bar)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="heating_pressure" type="number" name="heating_pressure" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="cooling">Cooling Required</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="cooling_required" name="cooling" value="cooling required" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooling', 'cooling_other')" >
+            <span class="ml-2">Cooling required</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="no_cooling_required" name="cooling" value="no cooling required" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooling', 'cooling_other')" >
+            <span class="ml-2">No cooling required</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="cooling" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooling', 'cooling_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="cooling_other" name="cooling_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="cooler">Cooling Source</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="water" name="cooler" value="water" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooler', 'cooler_other')" >
+            <span class="ml-2">Water</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="chiller" name="cooler" value="chiller" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooler', 'cooler_other')" >
+            <span class="ml-2">Chiller</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="cooler" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('cooler', 'cooler_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="cooler_other" name="cooler_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="cooling_temperature">
+    Cooling Source Temperature (°C)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="cooling_temperature" type="number" name="cooling_temperature" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="cooling_pressure">
+    Cooling Source Pressure (bar)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="cooling_pressure" type="number" name="cooling_pressure" value="">
+            </div>
+            <div class="col-span-2">
+                <label class="block font-normal text-md mb-2" for="properties_annotation">
+    Remark
+</label>                <textarea rows="3"  class="text-sm p-4 rounded-md border-none border-gray-300 shadow-sm w-full" id="properties_annotation" name="properties_annotation" value=""></textarea>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-md mt-8 shadow-md">
+        <div class="flex bg-gray-100 rounded-t-md py-2 px-6 shadow-sm">
+            <h2 class="flex-1 text-base font-semibold uppercase">Vessel</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-6">
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="material">Material</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="SUS304" name="material" value="SUS304" class="text-primary focus:ring-white" onclick="toggleOptionalInput('material', 'material_other')" >
+            <span class="ml-2">SUS304</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="SUS316" name="material" value="SUS316" class="text-primary focus:ring-white" onclick="toggleOptionalInput('material', 'material_other')" >
+            <span class="ml-2">SUS316</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="steel" name="material" value="steel" class="text-primary focus:ring-white" onclick="toggleOptionalInput('material', 'material_other')" >
+            <span class="ml-2">steel</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="FRP_Coating" name="material" value="FRP coating" class="text-primary focus:ring-white" onclick="toggleOptionalInput('material', 'material_other')" >
+            <span class="ml-2">FRP Coating</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="material" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('material', 'material_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="material_other" name="material_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="layer">
+    Number of Vessel&#039;s Layer
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="layer" type="number" name="layer" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="first_layer_diameter">
+    Diameter (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="first_layer" type="number" name="first_layer_diameter" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="first_layer_thickness">
+    Head Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="first_layer" type="number" name="first_layer_thickness" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="first_layer_bottom">
+    Bottom Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="first_layer" type="number" name="first_layer_bottom" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="first_layer_shell">
+    Shell Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="first_layer" type="number" name="first_layer_shell" value="">
+            </div>
+            <div id="second_layer" class="hidden col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="second_layer">Second Layer Type</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="double_jacket" name="second_layer" value="double jacket" class="text-primary focus:ring-white" onclick="toggleOptionalInput('second_layer', 'second_layer_other')" >
+            <span class="ml-2">Double Jacket</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="haft_coll" name="second_layer" value="haft coll" class="text-primary focus:ring-white" onclick="toggleOptionalInput('second_layer', 'second_layer_other')" >
+            <span class="ml-2">Haft Coll</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="second_layer" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('second_layer', 'second_layer_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="second_layer_other" name="second_layer_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div id="second_layer_thickness" class="hidden col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="second_layer_thickness">
+    Second Layer Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="second_layer_thickness" type="number" name="second_layer_thickness" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="insulator">Insulator Type</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="rock_wool" name="insulator" value="rock wool" class="text-primary focus:ring-white" onclick="toggleOptionalInput('insulator', 'insulator_other')" >
+            <span class="ml-2">Rock wool</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="Pu_Foam" name="insulator" value="PU foam" class="text-primary focus:ring-white" onclick="toggleOptionalInput('insulator', 'insulator_other')" >
+            <span class="ml-2">PU foam</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="insulator" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('insulator', 'insulator_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="insulator_other" name="insulator_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="insulator_thickness">
+    Insulator Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="insulator_thickness" type="number" name="insulator_thickness" value="">
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="vessel_head">Head of Vessel</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="flat" name="vessel_head" value="flat type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_head', 'vessel_head_other')" >
+            <span class="ml-2">Flat type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="dish" name="vessel_head" value="dish type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_head', 'vessel_head_other')" >
+            <span class="ml-2">Dish type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="cone" name="vessel_head" value="cone type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_head', 'vessel_head_other')" >
+            <span class="ml-2">Cone type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="open" name="vessel_head" value="open type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_head', 'vessel_head_other')" >
+            <span class="ml-2">Open type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="vessel_head" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_head', 'vessel_head_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="vessel_head_other" name="vessel_head_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="vessel_bottom">Buttom of Vessel</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="flat" name="vessel_bottom" value="flat type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_bottom', 'vessel_bottom_other')" >
+            <span class="ml-2">Flat type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="dish" name="vessel_bottom" value="dish type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_bottom', 'vessel_bottom_other')" >
+            <span class="ml-2">Dish type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="cone" name="vessel_bottom" value="cone type" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_bottom', 'vessel_bottom_other')" >
+            <span class="ml-2">Cone type</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="vessel_bottom" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('vessel_bottom', 'vessel_bottom_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="vessel_bottom_other" name="vessel_bottom_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="overlay">Material of Cladding</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="stainless" name="overlay" value="stainless" class="text-primary focus:ring-white" onclick="toggleOptionalInput('overlay', 'overlay_other')" >
+            <span class="ml-2">Stainless</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="aluminum" name="overlay" value="aluminum" class="text-primary focus:ring-white" onclick="toggleOptionalInput('overlay', 'overlay_other')" >
+            <span class="ml-2">Aluminum</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="overlay" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('overlay', 'overlay_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="overlay_other" name="overlay_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <label class="block font-normal text-md mb-2" for="overlay_thickness">
+    Cladding Thickness (mm)
+</label>                <input  class="text-sm p-4 h-8 rounded-md border-none border-gray-300 shadow-sm w-full" id="overlay_thickness" type="number" name="overlay_thickness" value="">
+            </div>
+            <div class="col-span-2">
+                <label class="block font-normal text-md mb-2" for="more_information">
+    More Information
+</label>                <textarea rows="3"  class="text-sm p-4 rounded-md border-none border-gray-300 shadow-sm w-full" id="more_information" name="more_information" value=""></textarea>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 rounded-md mt-8 shadow-md">
+        <div class="flex bg-gray-100 rounded-t-md py-2 px-6 shadow-sm">
+            <h2 class="flex-1 text-base font-semibold uppercase">more important information</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 p-6">
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="motor_type">Motor Type</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="electric_motor" name="motor_type" value="electric motor" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_type', 'motor_type_other')" >
+            <span class="ml-2">Electric Motor</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="air_motor" name="motor_type" value="air motor" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_type', 'motor_type_other')" >
+            <span class="ml-2">Air Motor</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="motor_type" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_type', 'motor_type_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="motor_type_other" name="motor_type_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="power_system">Power System</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="220V" name="power_system" value="220V" class="text-primary focus:ring-white" onclick="toggleOptionalInput('power_system', 'power_system_other')" >
+            <span class="ml-2">220V</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="380V" name="power_system" value="380V" class="text-primary focus:ring-white" onclick="toggleOptionalInput('power_system', 'power_system_other')" >
+            <span class="ml-2">380V</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="power_system" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('power_system', 'power_system_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="power_system_other" name="power_system_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="RPM">Revolution per Minute (RPM)</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="fixed" name="RPM" value="fixed" class="text-primary focus:ring-white" onclick="toggleOptionalInput('RPM', 'RPM_other')" >
+            <span class="ml-2">Fixed</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="adjustable" name="RPM" value="adjustable" class="text-primary focus:ring-white" onclick="toggleOptionalInput('RPM', 'RPM_other')" >
+            <span class="ml-2">Adjustable</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="RPM" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('RPM', 'RPM_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="RPM_other" name="RPM_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="motor_brand">Motor's Brand</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="ABB" name="motor_brand" value="ABB" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_brand', 'motor_brand_other')" >
+            <span class="ml-2">ABB</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="SIEMENS" name="motor_brand" value="SIEMENS" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_brand', 'motor_brand_other')" >
+            <span class="ml-2">SIEMENS</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="motor_brand" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('motor_brand', 'motor_brand_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="motor_brand_other" name="motor_brand_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+    <label for="inverter_brand">Inverter's Brand</label>
+    </div>
+<div class="my-2">
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="ABB" name="inverter_brand" value="ABB" class="text-primary focus:ring-white" onclick="toggleOptionalInput('inverter_brand', 'inverter_brand_other')" >
+            <span class="ml-2">ABB</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="MITSUBISHI" name="inverter_brand" value="MITSUBISHI" class="text-primary focus:ring-white" onclick="toggleOptionalInput('inverter_brand', 'inverter_brand_other')" >
+            <span class="ml-2">MITSUBISHI</span>
+        </label>
+    </div>
+        <div>
+        <label class="inline-flex items-center ml-6">
+            <input type="radio" id="others" name="inverter_brand" value="others" class="text-primary focus:ring-white" onclick="toggleOptionalInput('inverter_brand', 'inverter_brand_other')" >
+            <span class="ml-2">Others</span>
+        </label>
+    </div>
+        
+    <input type="text" id="inverter_brand_other" name="inverter_brand_other" value="" class="text-sm hidden w-[90%] shadow-sm border-none ml-6 py-2 px-4 mt-2 mb-4 bg-white rounded-md placeholder:text-sm placeholder:text-gray-300" placeholder="Type Others . . .">
+</div>
+
+            </div>
+            <div class="col-span-2 md:col-span-1 bg-gray-50 shadow-sm rounded-md">
+                <div class="pl-6 bg-white rounded-t-md py-2 mb-2 flex">
+                    <label for="drawing_file">Drawing File / Drawing Picture</label>
+                                    </div>
+                <div class="my-2">
+                    <div>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" id="have_drawing" name="drawing_file" value="yes"  onclick="fileInput()"
+                                class="text-primary focus:ring-white">
+                            <span class="ml-2">Have</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" id="no_drawing" name="drawing_file" value="no"  onclick="fileInput()"
+                                class="text-primary focus:ring-white">
+                            <span class="ml-2">Don't have</span>
+                        </label>
+                    </div>
+                </div>
+                <div id="upload_drawing_file" onclick="fileInput()" class="hidden w-[90%] ml-6 text-gray-600">
+                    <input
+                        class="block w-full text-sm text-gray-500 border-none shadow-sm rounded-md bg-white focus:outline-none"
+                        aria-describedby="file_input_help" id="file_input" type="file" name="upload_drawing_file"
+                        onchange="validateSize(this)">
+                    <p id="file_size_error" class="mt-1 text-sm text-danger-normal whitespace-normal"
+                        style="display:none;">
+                        File must not exceed 5MB.
+                    </p>
+                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">.pdf / .docs / .xlsx</p>
+                </div>
+                
+                <script>
+                    function validateSize(input) {
+                            const maxFileSize = 5 * 1024 * 1024;
+                            const fileSizeError = document.getElementById('file_size_error');
+                    
+                            if (input.files && input.files[0]) {
+                                if (input.files[0].size > maxFileSize) {
+                                    fileSizeError.style.display = 'block';
+                                    fileSizeError.textContent = 'File size must not exceed 5MB.';
+                                    input.value = '';
+                                } else {
+                                    fileSizeError.style.display = 'none';
+                                }
+                            }
+                        }
+                </script>
+
+            </div>
+    </section>
+
+    <div class="mt-4">
+        <button id="clear-button" type="reset"
+            class="w-20 py-2 text-white text-base bg-red-600 rounded-md hover:bg-red-500 focus:outline-none">Reset</button>
+        <button type="submit" class="text-base w-40 py-2 text-white bg-primary rounded-md hover:bg-green-500">
+    Submit
+</button>    </div>
+
+
+    <script type="text/javascript">
+        document.getElementById('clear-button').addEventListener('click', function() {
+                var radios = document.querySelectorAll('input[type="radio"]');
+                radios.forEach(function(radio) {
+                    radio.removeAttribute('checked');
+                });
+                return false; 
+            });
+    </script>
+    <script>
+        function toggleForms() {
+                var layerNumber = parseInt(document.getElementById('layer').value, 10);
+                var secondForm = document.getElementById('second_layer');
+                var thirdForm = document.getElementById('second_layer_thickness');
+
+                if (layerNumber >= 2) {
+                    secondForm.classList.remove('hidden');
+                    thirdForm.classList.remove('hidden');
+                } else {
+                    secondForm.classList.add('hidden');
+                    thirdForm.classList.add('hidden');
+                }
+            }
+
+            document.getElementById('layer').addEventListener('input', toggleForms);
+
+            window.addEventListener('load', toggleForms);
+    </script>
+    <script>
+        window.onload = function() {
+                var errorMessages = document.getElementById("error-message");
+                if (errorMessages) {
+                    var position = errorMessages.getBoundingClientRect().top + window.pageYOffset - 100; // 100px offset
+                    window.scrollTo({
+                        top: position,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+    </script>
+    <script>
+        function toggleOptionalInput(radioGroupName, optionalInputId) {
+                var selectedValue = document.querySelector(`input[name="${radioGroupName}"]:checked`).value;
+                var optionalInput = document.getElementById(optionalInputId);
+                if (selectedValue === 'others') {
+                    optionalInput.classList.remove('hidden');
+                } else {
+                    optionalInput.classList.add('hidden');
+                }
+            }
+    </script>
+    <script>
+        function fileInput() {
+                if (document.getElementById('have_drawing').checked) {
+                    document.getElementById('upload_drawing_file').style.display = 'block';
+                } else if (document.getElementById('no_drawing').checked) {
+                    document.getElementById('upload_drawing_file').style.display = 'none';
+                }
+            }
+            window.addEventListener('load', fileInput);
+    </script>
+    </form>
+</div>
+
+                <button data-toggle="back-to-top" class="fixed h-10 w-10 items-center justify-center rounded-full z-10 bottom-20 end-14 p-2.5 bg-gray-100 cursor-pointer shadow-lg hidden">
+    <img class="back-to-top-arrow text-white" src="/svg/back-to-top-arrow.svg"></img> 
+</button>    </main>
+
+    <script type="module" src="http://[::1]:5173/@vite/client"></script><script type="module" src="http://[::1]:5173/resources/js/app.js"></script>
+</body>
+</html>
+";
